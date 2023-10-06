@@ -1,16 +1,3 @@
-# projector-autoscaling
-
-Consists of Cloudformation template that is used for provisioning:
-- VPC
-- 2 Subnets
-- Internet Gateway
-- Route table
-- Autoscaling group with 2 EC2 instances
-- Load Balancer in front of EC2 instances
-- Scaling policies for scaling up EC2 instances based on AVG CPU usage and number of requests during particular period of time
-
-# Template
-```yaml
 AWSTemplateFormatVersion: 2010-09-09
 
 Resources:
@@ -189,13 +176,6 @@ Resources:
       Threshold: 100
       AlarmActions:
         - !Ref WebServerScaleUpPolicy
-```
-# Run
-```shell
-aws cloudformation create-stack --stack-name AutoscalingStack --template-body file:///<path-to-file>/template.yml
-```
 
-# Clean Up Resources
-```shell
- aws cloudformation delete-stack --stack-name AutoscalingStack
-```
+
+
